@@ -1,0 +1,902 @@
+{
+  "accessors": [
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 662,
+      "max": [
+        0.4955589771270752,
+        0.005448099225759506,
+        0.15366795659065247
+      ],
+      "min": [
+        -1.7044413089752197,
+        -0.13900820910930634,
+        -6.2119364738464355
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 7944,
+      "componentType": 5126,
+      "count": 662,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 662,
+      "max": [
+        1.0,
+        1.0,
+        0.9609915018081665,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -0.986121654510498,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 662,
+      "max": [
+        0.9959617853164673,
+        0.9940038919448853
+      ],
+      "min": [
+        0.005966842174530029,
+        0.011851340532302856
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5125,
+      "count": 1998,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 7,
+      "max": [
+        1.0,
+        1.0000001192092896,
+        3.3537332910782425e-07,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.9999949932098389,
+        5.528541805688292e-06,
+        1.0,
+        0.0,
+        6.21170711517334,
+        0.6463578939437866,
+        0.0330209955573082,
+        1.0
+      ],
+      "min": [
+        -5.527213943423703e-06,
+        -1.0,
+        -5.371502993511967e-07,
+        0.0,
+        -0.023287350311875343,
+        -5.233073920862807e-07,
+        0.0,
+        0.0,
+        -1.0,
+        -0.00010509887943044305,
+        -0.004822454880923033,
+        0.0,
+        -5.2199273109436035,
+        -0.6469148993492126,
+        -0.009944609366357327,
+        1.0
+      ],
+      "type": "MAT4"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5123,
+      "count": 662,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 10592,
+      "componentType": 5126,
+      "count": 662,
+      "max": [
+        1.0,
+        0.30000001192092896,
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.699999988079071,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 11,
+      "max": [
+        2.133333444595337
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 11,
+      "max": [
+        0.9999012351036072,
+        4.003143061481751e-08,
+        0.9999012351036072,
+        9.253121220353933e-07
+      ],
+      "min": [
+        -0.48914065957069397,
+        -9.38716539167217e-07,
+        -0.6970978379249573,
+        -3.0788856975050294e-07
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 44,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        2.0
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "byteOffset": 176,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        4.4584485294763e-05,
+        0.9999995231628418,
+        2.8261763418413466e-07,
+        0.9999995231628418
+      ],
+      "min": [
+        -1.942201350857431e-07,
+        0.0009913442190736532,
+        -4.458401963347569e-05,
+        -0.0009913615649566054
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 92,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        2.0
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.9917423129081726,
+        1.4305120430435636e-06,
+        -2.499961055946187e-06
+      ],
+      "min": [
+        0.9917421936988831,
+        1.4305110198620241e-06,
+        -2.499961055946187e-06
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 124,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        2.0
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "byteOffset": 368,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        0.9999983310699463,
+        5.193155629967805e-06,
+        0.9999983310699463,
+        -9.503438924696184e-09
+      ],
+      "min": [
+        -0.0018301006639376283,
+        -9.50401268795531e-09,
+        0.0018299900693818927,
+        -5.193155629967805e-06
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 172,
+      "componentType": 5126,
+      "count": 15,
+      "max": [
+        2.0
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 7,
+      "byteOffset": 96,
+      "componentType": 5126,
+      "count": 15,
+      "max": [
+        -6.611925982724642e-06,
+        0.0036411150358617306,
+        -0.001625537988729775
+      ],
+      "min": [
+        -6.765127182006836e-06,
+        -1.068943977355957,
+        -1.0722049474716187
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 232,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        2.0
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 8,
+      "byteOffset": 560,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.24093633890151978,
+        0.5002274513244629,
+        0.55349200963974,
+        0.8037025332450867
+      ],
+      "min": [
+        -0.5001224875450134,
+        -0.38959217071533203,
+        -0.4998573660850525,
+        -0.49987733364105225
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 264,
+      "componentType": 5126,
+      "count": 33,
+      "max": [
+        1.0666667222976685
+      ],
+      "min": [
+        0.0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 7,
+      "byteOffset": 276,
+      "componentType": 5126,
+      "count": 33,
+      "max": [
+        0.007782102096825838,
+        -0.10007090121507645,
+        0.06678015738725662
+      ],
+      "min": [
+        0.007782102096825838,
+        -0.5013986229896545,
+        0.06678006798028946
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "animations": [
+    {
+      "channels": [
+        {
+          "sampler": 0,
+          "target": {
+            "node": 10,
+            "path": "rotation"
+          }
+        },
+        {
+          "sampler": 1,
+          "target": {
+            "node": 13,
+            "path": "rotation"
+          }
+        },
+        {
+          "sampler": 2,
+          "target": {
+            "node": 14,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 3,
+          "target": {
+            "node": 14,
+            "path": "rotation"
+          }
+        },
+        {
+          "sampler": 4,
+          "target": {
+            "node": 12,
+            "path": "translation"
+          }
+        },
+        {
+          "sampler": 5,
+          "target": {
+            "node": 12,
+            "path": "rotation"
+          }
+        },
+        {
+          "sampler": 6,
+          "target": {
+            "node": 9,
+            "path": "translation"
+          }
+        }
+      ],
+      "name": "SantaMail",
+      "samplers": [
+        {
+          "input": 8,
+          "interpolation": "LINEAR",
+          "output": 9
+        },
+        {
+          "input": 10,
+          "interpolation": "LINEAR",
+          "output": 11
+        },
+        {
+          "input": 12,
+          "interpolation": "LINEAR",
+          "output": 13
+        },
+        {
+          "input": 14,
+          "interpolation": "LINEAR",
+          "output": 15
+        },
+        {
+          "input": 16,
+          "interpolation": "LINEAR",
+          "output": 17
+        },
+        {
+          "input": 18,
+          "interpolation": "LINEAR",
+          "output": 19
+        },
+        {
+          "input": 20,
+          "interpolation": "LINEAR",
+          "output": 21
+        }
+      ]
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "ARCTIC  WOLVES™ (https://sketchfab.com/arctic.wolves)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/letter-for-santa-bcd4e00de2944401bc164b8e7859b6e9",
+      "title": "Letter for Santa"
+    },
+    "generator": "Sketchfab-15.55.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 5296,
+      "byteStride": 8,
+      "name": "shortBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7992,
+      "byteOffset": 5296,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 5296,
+      "byteOffset": 13288,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 15888,
+      "byteOffset": 18584,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 21184,
+      "byteOffset": 34472,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 448,
+      "byteOffset": 55656,
+      "name": "floatBufferViews"
+    },
+    {
+      "buffer": 0,
+      "byteLength": 396,
+      "byteOffset": 56104,
+      "name": "floatBufferViews"
+    },
+    {
+      "buffer": 0,
+      "byteLength": 672,
+      "byteOffset": 56500,
+      "byteStride": 12,
+      "name": "floatBufferViews"
+    },
+    {
+      "buffer": 0,
+      "byteLength": 688,
+      "byteOffset": 57172,
+      "byteStride": 16,
+      "name": "floatBufferViews"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 57860,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "extensionsUsed": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "images": [
+    {
+      "uri": "textures/Material_27_diffuse.png"
+    },
+    {
+      "uri": "textures/Material_27_specularGlossiness.png"
+    },
+    {
+      "uri": "textures/Material_27_normal.png"
+    },
+    {
+      "uri": "textures/Material_27_occlusion.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "diffuseTexture": {
+            "index": 0
+          },
+          "glossinessFactor": 1.0,
+          "specularFactor": [
+            0.006583100880338793,
+            0.006583100880338793,
+            0.006583100880338793
+          ],
+          "specularGlossinessTexture": {
+            "index": 1
+          }
+        }
+      },
+      "name": "Material_27",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 3
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SantaMails_mesh_Material #27_0",
+      "primitives": [
+        {
+          "attributes": {
+            "JOINTS_0": 6,
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 3,
+            "WEIGHTS_0": 7
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.1428571492433548,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.172065926445695e-17,
+        -0.1428571492433548,
+        0.0,
+        0.0,
+        0.1428571492433548,
+        3.172065926445695e-17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "SantaMails.FBX"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "Object_2"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "SantaMail",
+      "rotation": [
+        -9.735359185469861e-08,
+        -0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "children": [
+        6,
+        8,
+        7,
+        15
+      ],
+      "name": "Object_5"
+    },
+    {
+      "children": [
+        9
+      ],
+      "name": "_rootJoint"
+    },
+    {
+      "matrix": [
+        0.9999999999999999,
+        3.101927297073854e-25,
+        1.7327206336414545e-10,
+        0.0,
+        1.7327206336414558e-10,
+        6.12323399573677e-17,
+        -1.0000000000000007,
+        0.0,
+        -3.2080258359641354e-25,
+        1.0000000000000007,
+        6.12323399573677e-17,
+        0.0,
+        -0.6044411659247981,
+        -0.0060604177415370525,
+        -0.3963320553302765,
+        1.0
+      ],
+      "name": "Object_7"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_8",
+      "skin": 0
+    },
+    {
+      "children": [
+        10,
+        11
+      ],
+      "name": "SantaMail_RootBone_00",
+      "rotation": [
+        -0.0016985571710392833,
+        0.0017113693756982684,
+        0.7071048021316528,
+        0.7071046233177185
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999998807907104,
+        1.0
+      ],
+      "translation": [
+        0.007782101631164551,
+        -0.5013985633850098,
+        0.06678006798028946
+      ]
+    },
+    {
+      "name": "SantaMail_CapBone_01",
+      "rotation": [
+        -0.014055503532290459,
+        -4.782181122209295e-07,
+        0.9999012351036072,
+        4.804826971849252e-07
+      ],
+      "scale": [
+        1.0,
+        0.9999997615814209,
+        1.0000004768371582
+      ],
+      "translation": [
+        1.1083810329437256,
+        -0.00024991855025291443,
+        -0.005447085946798325
+      ]
+    },
+    {
+      "children": [
+        12
+      ],
+      "name": "Paper_02",
+      "rotation": [
+        -0.5011995434761047,
+        0.5012086629867554,
+        0.4987884759902954,
+        -0.4987974762916565
+      ],
+      "scale": [
+        1.0,
+        1.0000001192092896,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.07980585098266602,
+        0.05024990811944008,
+        -0.002739816904067993
+      ]
+    },
+    {
+      "children": [
+        13,
+        14
+      ],
+      "name": "SantaPaper_rootBodyBone_03",
+      "rotation": [
+        -0.49996018409729004,
+        0.50003981590271,
+        0.49996018409729004,
+        0.50003981590271
+      ],
+      "scale": [
+        1.000000238418579,
+        1.0000001192092896,
+        1.0000001192092896
+      ],
+      "translation": [
+        -6.768852472305298e-06,
+        0.0036408305168151855,
+        -0.0016255378723144531
+      ]
+    },
+    {
+      "name": "SantaPaper_FootBone_04",
+      "rotation": [
+        -1.9421418073761743e-07,
+        0.0009913442190736532,
+        -4.458401235751808e-05,
+        0.9999995231628418
+      ],
+      "translation": [
+        -0.0016241967678070068,
+        -5.725771188735962e-06,
+        -0.0036414414644241333
+      ]
+    },
+    {
+      "name": "SantaPaper_HeadBone_05",
+      "rotation": [
+        -0.0018300999654456973,
+        -9.523705379876901e-09,
+        0.9999983310699463,
+        -5.201490694162203e-06
+      ],
+      "scale": [
+        1.0000001192092896,
+        1.0,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.9917422533035278,
+        1.430511474609375e-06,
+        -2.5033950805664063e-06
+      ]
+    },
+    {
+      "name": "SantaMails_mesh",
+      "rotation": [
+        1.3234889800848443e-23,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 5,
+      "joints": [
+        6,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "skeleton": 6
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    }
+  ]
+}
