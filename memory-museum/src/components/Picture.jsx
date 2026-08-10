@@ -1,31 +1,56 @@
-// import { useGLTF, useTexture } from '@react-three/drei'
-// import { useEffect } from 'react'
+import { useTexture } from '@react-three/drei'
+import { useRef, useState } from 'react'
+import { MEMORY_CONFIG } from '../libs/memoryConfig'
+import { useMemoryStore } from '../stores/useMemoryStore'
+import USAGI from '../../public/images/usagi.jpg'
+import { useFrame } from '@react-three/fiber'
 
-// export default function Picture({
-//   position = [-0.6, -0.72, -1.1],
-//   scale = 1,
-//   imageSrc = '/images/photo1.jpg',
-// }) {
-//   const { scene } = useGLTF('/models/picture.glb')
-//   const photoTexture = useTexture(imageSrc)
+const { position: PICTURE_POS } = MEMORY_CONFIG.picture
 
-//   useEffect(() => {
-//     scene.traverse((child) => {
-//         if (child.isMesh) {
-//         child.visible = child.name === 'pCube2_lambert1_0' // toggle this name to test each one
-//         }
-//     })
-//     }, [scene])
+export default function Picture({
+    position = PICTURE_POS,
+    scale = 1,
+    imageSrc = USAGI,
+}) {
+    const ref = useRef()
+    const [hovered, setHovered] = useState(false)
+    const pictureTexture = useTexture(imageSrc)
+    const setActiveMemory = useMemoryStore((s) => s.setActiveMemory)
+    const activeMemory = useMemoryStore((s) => s.activeMemory)
+    const isTransitioning = useMemoryStore((s) => s.activeMemory)
+    const isOpen = activeMemory === 'picture'
 
-//   return (
-//     <group position={position} scale={scale}>
-//       <primitive object={scene} />
-//       <mesh position={[0, 0, 0.02]}>
-//         <planeGeometry args={[0.2, 0.26]} />
-//         <meshStandardMaterial map={photoTexture} roughness={0.9} />
-//       </mesh>
-//     </group>
-//   )
-// }
+    useFrame(() => {
+        const targetRotX = isOpen ? -0.15 : 0
+        const targetScale = hovered && !isOpen && !isTransitioning ? scale * 1.06 : scale
+        ref.current.rotation.x += (targetRotX - ref.current.rotation.x) * 0.1
+        ref.current.scale.setScalar(
+            ref.current.scale.x + (targetScale - ref.current.scale.x) * 0.1
+        )
+    })
 
-// useGLTF.preload('/models/picture.glb')
+    return (
+        <group 
+            ref={ref}
+            position={position}
+            scale={scale}
+            onClick={(e) => {
+                e.stopPropagation()
+                setActiveMemory(isOpen ? null : 'picture')
+            }}
+            onPointerOver={() => !isTransitioning && setHovered(true)}
+            onPointerOut={() => setHovered(false)}
+        >
+            {/* frame */}
+            <mesh castShadow receiveShadow>
+                <boxGeometry args={[0.5, 0.6, 0.03]} />
+                <meshStandardMaterial color="#2b2b2b" roughness={0.4} />
+            </mesh>
+            {/* picture */}
+            <mesh position={[0, 0, 0.02]}>
+                <planeGeometry args={[0.4, 0.25]} />
+                <meshStandardMaterial map={photoTexture} roughness={0.9} />
+            </mesh>
+        </group>
+    )
+}
