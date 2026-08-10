@@ -21,7 +21,7 @@ export const MEMORY_CONFIG = {
         color: '#8B0000',
         particleColor: '#e0a3a3',
     },
-    photo: {
+    picture: {
         position: [-1.5, -0.82, -0.4],
         cameraTarget: [-1.5, -0.68, 0.25],
         title: 'The Story We Wrote',
