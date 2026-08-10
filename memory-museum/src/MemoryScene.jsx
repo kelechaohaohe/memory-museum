@@ -1,6 +1,6 @@
 import { Sparkles, Text } from '@react-three/drei'
 import { Html } from '@react-three/drei'
-import { useMemoryStore } from './store'
+import { useMemoryStore } from './stores/useMemoryStore'
 
 const MEMORIES = {
   book:    { title: 'The Story We Wrote', color: '#8B0000' },
