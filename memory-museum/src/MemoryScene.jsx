@@ -15,11 +15,21 @@ export default function MemoryScene() {
   if (!activeMemory) return null
 
   const memory = MEMORY_CONFIG[activeMemory]
-  
+  const style = PARTICLE_STYLE[activeMemory] ?? { size: 3, speed: 0.3 }
 
   return (
     <group>
-      <Sparkles count={150} scale={6} size={3} speed={0.3} color={memory.color} />
+      <fog 
+        attach="fog"
+        args={[ '#0d0a14', 3, 10]}
+      />
+      <Sparkles
+        count={150}
+        scale={6}
+        size={style.size}
+        speed={style.speed}
+        color={memory.particleColor}
+        />
       <Text position={[0, 1, 0]} fontSize={0.4} color="white" anchorX="center">
         {memory.title}
       </Text>
