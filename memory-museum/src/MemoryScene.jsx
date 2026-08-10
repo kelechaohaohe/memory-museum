@@ -1,19 +1,21 @@
-import { Sparkles, Text } from '@react-three/drei'
-import { Html } from '@react-three/drei'
+import { Sparkles, Text, Html } from '@react-three/drei'
 import { useMemoryStore } from './stores/useMemoryStore'
+import { MEMORY_CONFIG } from './libs/memoryConfig'
 
-const MEMORIES = {
-  book:    { title: 'The Story We Wrote', color: '#8B0000' },
-  journal: { title: 'Late Night Thoughts', color: '#c9a86a' },
-  letter:  { title: 'A Letter Never Sent', color: '#f4ecd8' },
-  photo:   { title: 'That Summer', color: '#4a90d9' },
+const PARTICLE_STYLE = {
+  book: { size: 2.5, speed: 0.2 },
+  journal: { size: 4, speed: 0.15 },
+  letter: { size: 1.5, speed: 0.6 },
+  photo: { size: 3, speed: 0.35 },
 }
 
 export default function MemoryScene() {
   const activeMemory = useMemoryStore((s) => s.activeMemory)
   const reset = useMemoryStore((s) => s.reset)
   if (!activeMemory) return null
-  const memory = MEMORIES[activeMemory]
+
+  const memory = MEMORY_CONFIG[activeMemory]
+  
 
   return (
     <group>
