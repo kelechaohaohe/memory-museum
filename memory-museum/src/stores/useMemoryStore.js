@@ -6,4 +6,5 @@ export const useMemoryStore = create((set) => ({
   setActiveMemory: (id) => set({ activeMemory: id, isTransitioning: true }),
   finishTransition: () => set({ isTransitioning: false }),
   exitMemory: () => set({ activeMemory: null, isTransitioning: false }),
+  reset: () => set({ activeMemory: null, isTransitioning: false }),
 }))

@@ -1,6 +1,6 @@
 // CameraRig.jsx
 import { useFrame, useThree } from '@react-three/fiber'
-import { useMemoryStore } from './store'
+import { useMemoryStore } from '../src/stores/useMemoryStore'
 
 const BOOK_POS = [-0.5, -0.82, -0.4]
 const ZOOM_CAM = [BOOK_POS[0], BOOK_POS[1] + 0.15, BOOK_POS[2] + 0.6]
