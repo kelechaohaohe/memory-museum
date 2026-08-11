@@ -1,45 +1,66 @@
-import { useFrame, useThree } from '@react-three/fiber'
-import { useMemoryStore } from '../src/stores/useMemoryStore'
-import { MEMORY_CONFIG } from '../src/libs/memoryConfig'
+import { useRef, useEffect } from 'react';
+import { useThree, useFrame } from '@react-three/fiber';
+import gsap from 'gsap';
+import { useMemoryStore } from '../src/stores/useMemoryStore';
+import { MEMORY_CONFIG } from '../src/libs/memoryConfig';
 
-const IDLE_CAM = [0, -0.5, 6]
-const MEMORY_CAM = [0, 0.3, 2.5]
+const DESK_VIEW = { position: [0, 2.6, 4.2], lookAt: [0, 0.7, 0] };
 
 export default function CameraRig() {
-  const { camera, mouse } = useThree()
-  const isTransitioning = useMemoryStore((s) => s.isTransitioning)
-  const activeMemory = useMemoryStore((s) => s.activeMemory)
+  const { camera } = useThree();
+  const activeMemory = useMemoryStore((s) => s.activeMemory);
+  const finishTransition = useMemoryStore((s) => s.finishTransition);
+  const introComplete = useMemoryStore((s) => s.introComplete);
+
+  const lookAtTarget = useRef({ x: 0, y: 0.7, z: 0 });
+  const mouse = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMove = (e) => {
+      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    window.addEventListener('pointermove', handleMove);
+    return () => window.removeEventListener('pointermove', handleMove);
+  }, []);
+
+  useEffect(() => {
+    if (!introComplete) return;
+
+    const target = activeMemory
+      ? memoryConfig[activeMemory].cameraTarget
+      : DESK_VIEW;
+
+    const tl = gsap.timeline({
+      onComplete: () => finishTransition(),
+    });
+
+    tl.to(camera.position, {
+      x: target.position[0],
+      y: target.position[1],
+      z: target.position[2],
+      duration: 1.4,
+      ease: 'power3.inOut',
+    }, 0);
+
+    tl.to(lookAtTarget.current, {
+      x: target.lookAt[0],
+      y: target.lookAt[1],
+      z: target.lookAt[2],
+      duration: 1.4,
+      ease: 'power3.inOut',
+      onUpdate: () => camera.lookAt(lookAtTarget.current.x, lookAtTarget.current.y, lookAtTarget.current.z),
+    }, 0);
+  }, [activeMemory, introComplete]);
 
   useFrame(() => {
-    // Idle at desk: subtle mouse-follow parallax
-    if (!isTransitioning && !activeMemory) {
-      const targetX = IDLE_CAM[0] + mouse.x * 0.3
-      const targetY = IDLE_CAM[1] + mouse.y * 0.15
-      camera.position.x += (targetX - camera.position.x) * 0.02
-      camera.position.y += (targetY - camera.position.y) * 0.02
-      camera.position.z += (IDLE_CAM[2] - camera.position.z) * 0.02
-      camera.lookAt(0, -0.9, 0)
-      return
-    }
+    if (activeMemory || !introComplete) return;
+    const targetX = DESK_VIEW.position[0] + mouse.current.x * 0.25;
+    const targetY = DESK_VIEW.position[1] + mouse.current.y * 0.12;
+    camera.position.x += (targetX - camera.position.x) * 0.03;
+    camera.position.y += (targetY - camera.position.y) * 0.03;
+    camera.lookAt(DESK_VIEW.lookAt[0], DESK_VIEW.lookAt[1], DESK_VIEW.lookAt[2]);
+  });
 
-    // Diving into a memory: fly toward THAT object's own camera target
-    if (isTransitioning && activeMemory) {
-      const cfg = MEMORY_CONFIG[activeMemory]
-      camera.position.x += (cfg.cameraTarget[0] - camera.position.x) * 0.08
-      camera.position.y += (cfg.cameraTarget[1] - camera.position.y) * 0.08
-      camera.position.z += (cfg.cameraTarget[2] - camera.position.z) * 0.08
-      camera.lookAt(...cfg.position)
-      return
-    }
-
-    // Inside the memory scene
-    if (activeMemory && !isTransitioning) {
-      camera.position.x += (MEMORY_CAM[0] - camera.position.x) * 0.06
-      camera.position.y += (MEMORY_CAM[1] - camera.position.y) * 0.06
-      camera.position.z += (MEMORY_CAM[2] - camera.position.z) * 0.06
-      camera.lookAt(0, 0, 0)
-    }
-  })
-
-  return null
+  return null;
 }

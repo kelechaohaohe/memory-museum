@@ -1,12 +1,17 @@
 export const MEMORY_CONFIG = {
   book: {
+    id: 'book',
+    label: 'Book',
     position: [-1.8, -0.82, -0.4],
     cameraTarget: [-1.8, -0.68, 0.25],
     title: 'The Story We Wrote',
     color: '#7a4a2e',
     particleColor: '#e0a3a3',
+    // ambientTrack: placeholder for the song,
   },
   letter: {
+    id: 'letter',
+    label: 'Letter',
     position: [-0.1, -0.82, 0.3],
     cameraTarget: [-0.6, -0.62, 0.75],
     title: 'The Story We Read',
@@ -14,6 +19,8 @@ export const MEMORY_CONFIG = {
     particleColor: '#f4ecd8',
   },
   record: {
+    id: 'record',
+    label: 'Record',
     position: [1.5, -0.7, 0.5],
     cameraTarget: [0.6, -0.55, -0.1],
     title: 'The Story We Listen',
@@ -21,6 +28,8 @@ export const MEMORY_CONFIG = {
     particleColor: '#4a90d9',
   },
   picture: {
+    id: 'picture',
+    label: 'Picture',
     position: [-0.6, -0.3, -1.1],
     cameraTarget: [1.9, -0.55, 0.0],
     title: 'The Story We Saw',

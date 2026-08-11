@@ -1,10 +1,27 @@
 import { create } from 'zustand'
 
-export const useMemoryStore = create((set) => ({
-  activeMemory: null,       // 'book' | 'journal' | 'letter' | 'photo' | null
+export const useMemoryStore = create((set, get) => ({
+  activeMemory: null,       // 'book' | 'record' | 'letter' | 'photo' | null
+  hoveredObject: null,
   isTransitioning: false,
-  setActiveMemory: (id) => set({ activeMemory: id, isTransitioning: true }),
+  introComplete: false,
+
+  setHoveredObject: (id) => set({ hoveredObject: id }),
+
+  setActiveMemory: (id) => {
+    const { isTransitioning, activeMemory } = get();
+    
+    // ignore click in middle of transition
+    if (isTransitioning || activeMemory === id) return;
+    set({ isTransitioning: true, activeMemory: id });
+  },
+
+  closeMemory: () => {
+    const { isTransitioning } = get();
+    if (isTransitioning) return;
+    set({ isTransitioning: true, activeMemory: null });
+  },
+
   finishTransition: () => set({ isTransitioning: false }),
-  exitMemory: () => set({ activeMemory: null, isTransitioning: false }),
-  reset: () => set({ activeMemory: null, isTransitioning: false }),
-}))
+  completeIntro: () => set({ introComplete: true }),
+}));
