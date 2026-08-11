@@ -9,7 +9,7 @@ import MemoryScene from './MemoryScene'
 import CameraRig from './CameraRig'
 import Lamp from '../src/components/Lamp'
 import Letter from '../src/components/Letter'
-// import Picture from '../src/components/Picture'
+import Picture from '../src/components/Picture'
 
 export default function App() {
   const activeMemory = useMemoryStore((s) => s.activeMemory)
@@ -33,10 +33,10 @@ export default function App() {
           <>
             <Desk />
             <Suspense fallback={null}>
-              <Book scale={0.7} />
+              <Book scale={0.9} />
               <Lamp />
-              {/* <Picture /> */}
-              <Letter position={[0.7, -0.82, 0.2]} scale={3} />
+              <Picture />
+              <Letter position={[1.7, -0.82, 0.2]} scale={4} />
             </Suspense>
           </>
         )}
