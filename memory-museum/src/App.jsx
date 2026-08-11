@@ -33,10 +33,10 @@ export default function App() {
           <>
             <Desk />
             <Suspense fallback={null}>
-              <Book scale={0.7} />
+              <Book scale={0.9} />
               <Lamp />
               <Picture />
-              <Letter position={[0.7, -0.82, 0.2]} scale={3} />
+              <Letter position={[1.4, -0.82, 0.2]} scale={4} />
             </Suspense>
           </>
         )}

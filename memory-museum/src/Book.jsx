@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { useMemoryStore } from './store'
 
-export default function Book({ position = [-0.5, -0.82, -0.4], scale = 1 }) {
+export default function Book({ position = [-0.1, -0.82, 0.4], scale = 4 }) {
   const { scene } = useGLTF('/models/journalBook.glb')
   const ref = useRef()
   const [hovered, setHovered] = useState(false)

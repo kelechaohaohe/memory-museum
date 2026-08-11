@@ -76,7 +76,7 @@ export default function Letter({ position = [0.7, -0.82, 0.2], scale = 1 }) {
       ref={group}
       position={position}
       scale={scale}
-      rotation={[-Math.PI / 2, 0, 0]}
+      rotation={[-0.3, 0, 0]}
       onClick={handleClick}
     >
       <primitive object={scene} />
