@@ -1,31 +1,50 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Environment } from '@react-three/drei'
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+  Vignette,
+  Noise,
+} from '@react-three/postprocessing'
 import { useMemoryStore } from '../src/stores/useMemoryStore'
 import Desk from '../src/components/Desk'
 import Book from '../src/components/Book'
+import Letter from '../src/components/Letter'
+import Record from '../src/components/Record'
+import Picture from '../src/components/Picture'
+import Lamp from '../src/components/Lamp'
+import DimOverlay from '../src/components/DimOverlay'
 import FlipTransition from './FlipTransition'
 import MemoryScene from './MemoryScene'
 import CameraRig from './CameraRig'
-import Lamp from '../src/components/Lamp'
-import Letter from '../src/components/Letter'
-import Picture from '../src/components/Picture'
 
 export default function App() {
   const activeMemory = useMemoryStore((s) => s.activeMemory)
   const isTransitioning = useMemoryStore((s) => s.isTransitioning)
   const finishTransition = useMemoryStore((s) => s.finishTransition)
 
-  if (isTransitioning) {
-    setTimeout(() => finishTransition(), 900)
-  }
+  // FIX: original called setTimeout directly in the render body, which
+  // re-armed a new timer on every re-render while transitioning. Moved
+  // into an effect that fires once per transition and cleans up.
+  useEffect(() => {
+    if (!isTransitioning) return
+    const timer = setTimeout(() => finishTransition(), 900)
+    return () => clearTimeout(timer)
+  }, [isTransitioning, finishTransition])
 
   return (
-    <div style={{ width: '100%', height: '100svh' }}>
-      <Canvas camera={{ position: [0, -0.5, 6], fov: 50 }}>
+    <div style={{ width: '100%', height: '100svh', position: 'relative' }}>
+      <Canvas camera={{ position: [0, -0.5, 6], fov: 50 }} shadows>
         <color attach="background" args={['#2b2438']} />
-        <ambientLight intensity={0.4} color="#ffb877" />
+        <fog attach="fog" args={['#2b2438', 4, 14]} />
+
+        <ambientLight intensity={0.15} color="#3a2e4a" />
         <directionalLight position={[-4, 4, 3]} intensity={2} color="#ffd9a0" castShadow />
+        <pointLight position={[0, 1, -2]} intensity={0.8} color="#aa3bff" />
+
+        <Environment preset="apartment" background={false} />
 
         <CameraRig />
 
@@ -37,6 +56,7 @@ export default function App() {
               <Lamp />
               <Picture />
               <Letter position={[1.7, -0.82, 0.2]} scale={4} />
+              <Record scale={1} />
             </Suspense>
           </>
         )}
@@ -48,7 +68,20 @@ export default function App() {
           enabled={!activeMemory && !isTransitioning}
           target={[0, -1.5, 0]}
         />
+
+        <EffectComposer>
+          <DepthOfField
+            focusDistance={activeMemory ? 0.015 : 0}   // 0 disables blur at the desk
+            focalLength={0.05}
+            bokehScale={activeMemory ? 3 : 0}
+          />
+          <Bloom intensity={0.5} luminanceThreshold={0.3} mipmapBlur />
+          <Vignette eskil={false} offset={0.25} darkness={0.6} />
+          <Noise opacity={0.015} />
+        </EffectComposer>
       </Canvas>
+
+      <DimOverlay />
     </div>
   )
 }

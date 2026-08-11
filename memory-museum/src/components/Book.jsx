@@ -2,13 +2,17 @@ import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { useMemoryStore } from '../stores/useMemoryStore'
+import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
-export default function Book({ position = [-0.1, -0.82, 0.4], scale = 4 }) {
+const { position: BOOK_POS } = MEMORY_CONFIG.book
+
+export default function Book({ position = BOOK_POS, scale = 4 }) {
   const { scene } = useGLTF('/models/journalBook.glb')
   const ref = useRef()
   const [hovered, setHovered] = useState(false)
   const setActiveMemory = useMemoryStore((s) => s.setActiveMemory)
   const activeMemory = useMemoryStore((s) => s.activeMemory)
+  const isTransitioning = useMemoryStore((s) => s.isTransitioning)
   const isOpen = activeMemory === 'book'
 
   useFrame(() => {
@@ -34,7 +38,7 @@ export default function Book({ position = [-0.1, -0.82, 0.4], scale = 4 }) {
         e.stopPropagation()
         setActiveMemory(isOpen ? null : 'book')
       }}
-      onPointerOver={() => setHovered(true)}
+      onPointerOver={() => !isTransitioning && setHovered(true)}
       onPointerOut={() => setHovered(false)}
     />
   )
