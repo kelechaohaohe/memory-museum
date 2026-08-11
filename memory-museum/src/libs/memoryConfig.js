@@ -3,7 +3,7 @@ export const MEMORY_CONFIG = {
     position: [-1.8, -0.82, -0.4],
     cameraTarget: [-1.8, -0.68, 0.25],
     title: 'The Story We Wrote',
-    color: '#8B0000',
+    color: '#7a4a2e',
     particleColor: '#e0a3a3',
   },
   letter: {
