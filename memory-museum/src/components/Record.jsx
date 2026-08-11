@@ -43,14 +43,15 @@ export default function Record({ position = RECORD_POS, scale = 1 }) {
         <meshStandardMaterial color="#3a2e28" roughness={0.6} />
       </mesh>
 
-      {/* vinyl disc */}
+      {/* vinyl disc — lies flat, no rotation needed since cylinders
+          are already flat-face-up by default */}
       <group ref={discRef} position={[0, -0.005, 0]}>
-        <mesh castShadow rotation={[Math.PI / 2, 0, 0]}>
+        <mesh castShadow>
           <cylinderGeometry args={[0.22, 0.22, 0.01, 48]} />
           <meshStandardMaterial color="#111111" roughness={0.35} metalness={0.2} />
         </mesh>
         {/* label */}
-        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0.006, 0]}>
+        <mesh position={[0, 0.006, 0]}>
           <cylinderGeometry args={[0.06, 0.06, 0.01, 32]} />
           <meshStandardMaterial color={MEMORY_CONFIG.record.color} roughness={0.5} />
         </mesh>

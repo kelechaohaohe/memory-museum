@@ -1,5 +1,3 @@
-import MemoryObject from './MemoryObject'
-
 export function Book() {
   return (
     <MemoryObject id="book" position={[-1.5, -0.65, 0.5]}>
@@ -11,12 +9,12 @@ export function Book() {
   )
 }
 
-export function Journal() {
+export function Record() {
   return (
-    <MemoryObject id="journal" position={[-0.5, -0.7, -0.4]}>
-      <mesh castShadow rotation={[0, 0.3, 0]}>
-        <boxGeometry args={[0.4, 0.06, 0.55]} />
-        <meshStandardMaterial color="#c9a86a" roughness={0.8} />
+    <MemoryObject id="record" position={[-0.3, -0.75, -0.9]}>
+      <mesh castShadow>
+        <cylinderGeometry args={[0.22, 0.22, 0.02, 48]} />
+        <meshStandardMaterial color="#111111" roughness={0.35} metalness={0.2} />
       </mesh>
     </MemoryObject>
   )
