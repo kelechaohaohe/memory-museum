@@ -65,11 +65,26 @@ export default function Record({ position = RECORD_POS, scale = 1.8 }) {
         </mesh>
       </group>
 
-      {/* tonearm */}
-      <mesh position={[0.24, 0.04, -0.2]} rotation={[0, 0.6, 0]} castShadow>
-        <boxGeometry args={[0.02, 0.02, 0.24]} />
-        <meshStandardMaterial color="#c9a86a" metalness={0.6} roughness={0.3} />
-      </mesh>
+      {/* tonearm pivot post — sits on the base, outside the disc's edge */}
+        <mesh position={[0.18, 0.02, -0.2]} castShadow>
+            <cylinderGeometry args={[0.025, 0.025, 0.06, 16]} />
+            <meshStandardMaterial color="#8a8a8a" metalness={0.7} roughness={0.3} />
+        </mesh>
+
+        {/* tonearm — pivots from the post above; rotate group.y to swing needle over the disc */}
+        <group position={[0.18, 0.05, -0.2]} rotation={[0, 2.3, 0]}>
+        {/* arm extends outward from the pivot along local -Z, offset by half its
+            own length so the pivot end (not the center) stays anchored at the post */}
+            <mesh position={[0, 0, -0.11]} castShadow>
+                <boxGeometry args={[0.015, 0.015, 0.22]} />
+                <meshStandardMaterial color="#c9a86a" metalness={0.6} roughness={0.3} />
+            </mesh>
+            {/* needle head at the far tip */}
+            <mesh position={[0, 0, -0.21]} castShadow>
+                <boxGeometry args={[0.03, 0.02, 0.03]} />
+                <meshStandardMaterial color="#2a2a2a" metalness={0.4} roughness={0.4} />
+            </mesh>
+        </group>
     </group>
   )
 }
