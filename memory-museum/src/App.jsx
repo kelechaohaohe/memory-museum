@@ -1,15 +1,15 @@
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { useMemoryStore } from './store'
-import Desk from './Desk'
-import Book from './Book'
+import { useMemoryStore } from '../src/stores/useMemoryStore'
+import Desk from '../src/components/Desk'
+import Book from '../src/components/Book'
 import FlipTransition from './FlipTransition'
 import MemoryScene from './MemoryScene'
 import CameraRig from './CameraRig'
-import Lamp from './Lamp'
-import Letter from './Letter'
-import Picture from './Picture'
+import Lamp from '../src/components/Lamp'
+import Letter from '../src/components/Letter'
+import Picture from '../src/components/Picture'
 
 export default function App() {
   const activeMemory = useMemoryStore((s) => s.activeMemory)

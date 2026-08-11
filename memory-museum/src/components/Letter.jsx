@@ -1,7 +1,7 @@
 import { useGLTF, useAnimations, useTexture } from '@react-three/drei'
 import { useRef, useEffect } from 'react'
 import { LoopOnce } from 'three'
-import { useMemoryStore } from './store'
+import { useMemoryStore } from '../stores/useMemoryStore'
 
 export default function Letter({ position = [0.7, -0.82, 0.2], scale = 1 }) {
   const group = useRef()
