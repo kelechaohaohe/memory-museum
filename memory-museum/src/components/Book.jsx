@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
+import * as THREE from 'three'
 import { useMemoryStore } from '../stores/useMemoryStore'
 import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
-const { position: BOOK_POS } = MEMORY_CONFIG.book
+const { position: BOOK_POS, color: BOOK_COLOR } = MEMORY_CONFIG.book
 
 export default function Book({ position = BOOK_POS, scale = 4 }) {
   const { scene } = useGLTF('/models/journalBook.glb')
@@ -15,8 +16,23 @@ export default function Book({ position = BOOK_POS, scale = 4 }) {
   const isTransitioning = useMemoryStore((s) => s.isTransitioning)
   const isOpen = activeMemory === 'book'
 
+  useEffect(() => {
+    const tint = new THREE.Color(BOOK_COLOR)
+
+    scene.traverse((child) => {
+      if (!child.isMesh) return
+
+      child.material = child.material.clone()
+      const mat = child.material
+
+      mat.color.set(tint)
+      mat.roughness = 0.7
+      mat.metalness = 0
+      mat.needsUpdate = true
+    })
+  }, [scene])
+
   useFrame(() => {
-    // little "lift" and tilt when opened, plus hover feedback
     const targetY = isOpen ? position[1] + 0.08 : position[1]
     const targetRotX = isOpen ? -0.25 : 0
     const targetScale = hovered && !isOpen ? scale * 1.05 : scale

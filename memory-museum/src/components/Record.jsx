@@ -5,7 +5,7 @@ import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: RECORD_POS } = MEMORY_CONFIG.record
 
-export default function Record({ position = RECORD_POS, scale = 1 }) {
+export default function Record({ position = RECORD_POS, scale = 1.8 }) {
   const group = useRef()
   const discRef = useRef()
   const [hovered, setHovered] = useState(false)
@@ -38,30 +38,53 @@ export default function Record({ position = RECORD_POS, scale = 1 }) {
       onPointerOut={() => setHovered(false)}
     >
       {/* turntable base */}
-      <mesh castShadow receiveShadow position={[0, -0.03, 0]}>
-        <cylinderGeometry args={[0.28, 0.3, 0.03, 32]} />
+      <mesh castShadow receiveShadow position={[0, -0.04, 0]}>
+        <cylinderGeometry args={[0.3, 0.32, 0.04, 32]} />
         <meshStandardMaterial color="#3a2e28" roughness={0.6} />
       </mesh>
 
-      {/* vinyl disc — lies flat, no rotation needed since cylinders
-          are already flat-face-up by default */}
-      <group ref={discRef} position={[0, -0.005, 0]}>
+      {/* vinyl disc — thicker now, with a visible edge */}
+      <group ref={discRef} position={[0, -0.01, 0]}>
         <mesh castShadow>
-          <cylinderGeometry args={[0.22, 0.22, 0.01, 48]} />
-          <meshStandardMaterial color="#111111" roughness={0.35} metalness={0.2} />
+          <cylinderGeometry args={[0.24, 0.24, 0.025, 48]} />
+          <meshStandardMaterial color="#111111" roughness={0.3} metalness={0.3} />
         </mesh>
+
+        {/* groove rings — thin concentric torus shapes give it real texture */}
+        {[0.10, 0.14, 0.18, 0.21].map((r, i) => (
+          <mesh key={i} position={[0, 0.014, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <torusGeometry args={[r, 0.0015, 8, 64]} />
+            <meshStandardMaterial color="#2a2a2a" roughness={0.4} metalness={0.4} />
+          </mesh>
+        ))}
+
         {/* label */}
-        <mesh position={[0, 0.006, 0]}>
-          <cylinderGeometry args={[0.06, 0.06, 0.01, 32]} />
+        <mesh position={[0, 0.014, 0]}>
+          <cylinderGeometry args={[0.07, 0.07, 0.012, 32]} />
           <meshStandardMaterial color={MEMORY_CONFIG.record.color} roughness={0.5} />
         </mesh>
       </group>
 
-      {/* tonearm */}
-      <mesh position={[0.22, 0.02, -0.18]} rotation={[0, 0.6, 0]} castShadow>
-        <boxGeometry args={[0.02, 0.02, 0.22]} />
-        <meshStandardMaterial color="#c9a86a" metalness={0.6} roughness={0.3} />
-      </mesh>
+      {/* tonearm pivot post — sits on the base, outside the disc's edge */}
+        <mesh position={[0.18, 0.02, -0.2]} castShadow>
+            <cylinderGeometry args={[0.025, 0.025, 0.06, 16]} />
+            <meshStandardMaterial color="#8a8a8a" metalness={0.7} roughness={0.3} />
+        </mesh>
+
+        {/* tonearm — pivots from the post above; rotate group.y to swing needle over the disc */}
+        <group position={[0.18, 0.05, -0.2]} rotation={[0, 2.3, 0]}>
+        {/* arm extends outward from the pivot along local -Z, offset by half its
+            own length so the pivot end (not the center) stays anchored at the post */}
+            <mesh position={[0, 0, -0.11]} castShadow>
+                <boxGeometry args={[0.015, 0.015, 0.22]} />
+                <meshStandardMaterial color="#c9a86a" metalness={0.6} roughness={0.3} />
+            </mesh>
+            {/* needle head at the far tip */}
+            <mesh position={[0, 0, -0.21]} castShadow>
+                <boxGeometry args={[0.03, 0.02, 0.03]} />
+                <meshStandardMaterial color="#2a2a2a" metalness={0.4} roughness={0.4} />
+            </mesh>
+        </group>
     </group>
   )
 }

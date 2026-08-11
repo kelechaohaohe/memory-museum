@@ -1,12 +1,12 @@
 import { useGLTF, useAnimations, useTexture } from '@react-three/drei'
 import { useRef, useEffect } from 'react'
-import { LoopOnce } from 'three'
+import { LoopOnce, DoubleSide } from 'three'
 import { useMemoryStore } from '../stores/useMemoryStore'
 import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: LETTER_POS } = MEMORY_CONFIG.letter
 
-export default function Letter({ position = LETTER_POS, scale = 1 }) {
+export default function Letter({ position = LETTER_POS, scale = 3.5 }) {
   const group = useRef()
   const { scene, animations } = useGLTF('/models/letter/scene.gltf')
   const { actions } = useAnimations(animations, group)
@@ -27,6 +27,7 @@ export default function Letter({ position = LETTER_POS, scale = 1 }) {
           mat.map = diffuseMap
           mat.normalMap = normalMap
           mat.aoMap = occlusionMap
+          mat.side = DoubleSide
           mat.needsUpdate = true
         }
         if (Array.isArray(child.material)) child.material.forEach(applyMaps)
@@ -37,7 +38,6 @@ export default function Letter({ position = LETTER_POS, scale = 1 }) {
 
   const handleClick = (e) => {
     e.stopPropagation()
-
     const clip = actions['SantaMail']
     if (clip) {
       clip.reset()
@@ -53,7 +53,7 @@ export default function Letter({ position = LETTER_POS, scale = 1 }) {
       ref={group}
       position={position}
       scale={scale}
-      rotation={[-Math.PI / 2, 0, 0]}
+      rotation={[-Math.PI / 2, 0, Math.PI]}
       onClick={handleClick}
     >
       <primitive object={scene} />
