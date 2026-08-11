@@ -36,7 +36,7 @@ export default function App() {
               <Book scale={0.9} />
               <Lamp />
               <Picture />
-              <Letter position={[1.4, -0.82, 0.2]} scale={4} />
+              <Letter position={[1.7, -0.82, 0.2]} scale={4} />
             </Suspense>
           </>
         )}

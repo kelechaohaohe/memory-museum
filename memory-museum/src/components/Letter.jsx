@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react'
 import { LoopOnce } from 'three'
 import { useMemoryStore } from '../stores/useMemoryStore'
 
-export default function Letter({ position = [0.7, -0.82, 0.2], scale = 1 }) {
+export default function Letter({ position = [-1, -0.82, 0.2], scale = 1 }) {
   const group = useRef()
   const { scene, animations } = useGLTF('/models/letter/scene.gltf')
   const { actions } = useAnimations(animations, group)
@@ -76,7 +76,7 @@ export default function Letter({ position = [0.7, -0.82, 0.2], scale = 1 }) {
       ref={group}
       position={position}
       scale={scale}
-      rotation={[-0.3, 0, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
       onClick={handleClick}
     >
       <primitive object={scene} />
