@@ -1,12 +1,12 @@
 import { Sparkles, Text, Html } from '@react-three/drei'
-import { useMemoryStore } from './stores/useMemoryStore'
-import { MEMORY_CONFIG } from './libs/memoryConfig'
+import { useMemoryStore } from '../src/stores/useMemoryStore'
+import { MEMORY_CONFIG } from '../src/libs/memoryConfig'
 
 const PARTICLE_STYLE = {
   book: { size: 2.5, speed: 0.2 },
-  journal: { size: 4, speed: 0.15 },
-  letter: { size: 1.5, speed: 0.6 },
-  photo: { size: 3, speed: 0.35 },
+  letter: { size: 4, speed: 0.15 },
+  record: { size: 1.5, speed: 0.6 },
+  picture: { size: 3, speed: 0.35 },
 }
 
 export default function MemoryScene() {
@@ -19,17 +19,14 @@ export default function MemoryScene() {
 
   return (
     <group>
-      <fog 
-        attach="fog"
-        args={[ '#0d0a14', 3, 10]}
-      />
+      <fog attach="fog" args={['#0d0a14', 3, 10]} />
       <Sparkles
         count={150}
         scale={6}
         size={style.size}
         speed={style.speed}
         color={memory.particleColor}
-        />
+      />
       <Text position={[0, 1, 0]} fontSize={0.4} color="white" anchorX="center">
         {memory.title}
       </Text>
