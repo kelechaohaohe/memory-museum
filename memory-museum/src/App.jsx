@@ -13,7 +13,7 @@ import Desk from '../src/components/Desk'
 import Book from '../src/components/Book'
 import Letter from '../src/components/Letter'
 import Record from '../src/components/Record'
-// import Picture from '../src/components/Picture'
+import Picture from '../src/components/Picture'
 import Lamp from '../src/components/Lamp'
 import DimOverlay from '../src/components/DimOverlay'
 import FlipTransition from './FlipTransition'
@@ -52,11 +52,11 @@ export default function App() {
           <>
             <Desk />
             <Suspense fallback={null}>
-              <Book scale={0.7} />
-              <Letter scale={3} />
-              <Record scale={1} />
-              {/* <Photo /> */}
+              <Book scale={0.9} />
               <Lamp />
+              <Picture />
+              <Letter position={[1.7, -0.82, 0.2]} scale={4} />
+              <Record scale={1} />
             </Suspense>
           </>
         )}

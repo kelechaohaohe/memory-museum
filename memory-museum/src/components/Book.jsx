@@ -6,7 +6,7 @@ import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: BOOK_POS } = MEMORY_CONFIG.book
 
-export default function Book({ position = BOOK_POS, scale = 1 }) {
+export default function Book({ position = BOOK_POS, scale = 4 }) {
   const { scene } = useGLTF('/models/journalBook.glb')
   const ref = useRef()
   const [hovered, setHovered] = useState(false)
