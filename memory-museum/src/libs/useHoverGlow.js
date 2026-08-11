@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useMemoryStore } from '../store/useMemoryStore';
+import { useMemoryStore } from '../stores/useMemoryStore';
 
 export function useHoverGlow(id, baseEmissive = '#000000', glowColor = '#ffffff') {
   const materialRef = useRef();
