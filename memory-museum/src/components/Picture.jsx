@@ -1,8 +1,11 @@
 import { useGLTF, useTexture } from '@react-three/drei'
 import { useEffect } from 'react'
+import { MEMORY_CONFIG } from '../libs/memoryConfig'
+
+const { position: PICTURE_POS } = MEMORY_CONFIG.picture
 
 export default function Picture({
-  position = [-1.8, -0.3, -1.2],
+  position = PICTURE_POS,
   scale = 0.5,
   rotation =[0, Math.PI / 6, 0],
   imageSrc = '/images/photo1.jpg',
