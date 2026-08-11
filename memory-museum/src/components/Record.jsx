@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useMemoryStore } from '../stores/useMemoryStore'
-import { MEMORY_CONFIG } from '../constants/memoryConfig'
+import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: RECORD_POS } = MEMORY_CONFIG.record
 
