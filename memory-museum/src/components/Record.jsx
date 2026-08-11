@@ -2,6 +2,8 @@ import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useMemoryStore } from '../stores/useMemoryStore'
 import { MEMORY_CONFIG } from '../libs/memoryConfig'
+import { useHoverGlow } from '../libs/useHoverGlow'
+import gsap from 'gsap'
 
 const { position: RECORD_POS } = MEMORY_CONFIG.record
 
@@ -12,7 +14,20 @@ export default function Record({ position = RECORD_POS, scale = 1.8 }) {
   const setActiveMemory = useMemoryStore((s) => s.setActiveMemory)
   const activeMemory = useMemoryStore((s) => s.activeMemory)
   const isTransitioning = useMemoryStore((s) => s.isTransitioning)
+  const { materialRef, handlers, glowColor } = useHoverGlow('record', '#000000', '#ffd76b');
   const isOpen = activeMemory === 'record'
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setActiveMemory('record');
+    if (groupRef.current) {
+      gsap.to(groupRef.current.rotation, {
+        y: groupRef.current.rotation.y + Math.PI * 6,
+        duration: 1.6,
+        ease: 'power2.out',
+      });
+    }
+  };
 
   useFrame((_, delta) => {
     if (isOpen) discRef.current.rotation.y += delta * 2.2
@@ -34,13 +49,14 @@ export default function Record({ position = RECORD_POS, scale = 1.8 }) {
         e.stopPropagation()
         setActiveMemory(isOpen ? null : 'record')
       }}
-      onPointerOver={() => !isTransitioning && setHovered(true)}
-      onPointerOut={() => setHovered(false)}
+      {...handlers}
+      // onPointerOver={() => !isTransitioning && setHovered(true)}
+      // onPointerOut={() => setHovered(false)}
     >
       {/* turntable base */}
       <mesh castShadow receiveShadow position={[0, -0.04, 0]}>
         <cylinderGeometry args={[0.3, 0.32, 0.04, 32]} />
-        <meshStandardMaterial color="#3a2e28" roughness={0.6} />
+        <meshStandardMaterial color="#3a2e28" roughness={0.6} metalness={0.3} emissive={glowColor} emissiveIntensity={0} />
       </mesh>
 
       {/* vinyl disc — thicker now, with a visible edge */}
