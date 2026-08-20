@@ -6,9 +6,10 @@ import { useMemoryStore } from '../stores/useMemoryStore'
 import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: BOOK_POS, color: BOOK_COLOR } = MEMORY_CONFIG.book
+const BASE = import.meta.env.BASE_URL
 
 export default function Book({ position = BOOK_POS, scale = 4 }) {
-  const { scene } = useGLTF('/models/journalBook.glb')
+  const { scene } = useGLTF(`${BASE}models/journalBook.glb`)
   const ref = useRef()
   const [hovered, setHovered] = useState(false)
   const setActiveMemory = useMemoryStore((s) => s.setActiveMemory)
@@ -60,4 +61,4 @@ export default function Book({ position = BOOK_POS, scale = 4 }) {
   )
 }
 
-useGLTF.preload('/models/journalBook.glb')
+useGLTF.preload(`${BASE}models/journalBook.glb`)
