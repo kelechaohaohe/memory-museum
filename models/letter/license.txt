@@ -1,0 +1,11 @@
+Model Information:
+* title:	Letter for Santa
+* source:	https://sketchfab.com/3d-models/letter-for-santa-bcd4e00de2944401bc164b8e7859b6e9
+* author:	ARCTIC  WOLVES™ (https://sketchfab.com/arctic.wolves)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Letter for Santa" (https://sketchfab.com/3d-models/letter-for-santa-bcd4e00de2944401bc164b8e7859b6e9) by ARCTIC  WOLVES™ (https://sketchfab.com/arctic.wolves) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
