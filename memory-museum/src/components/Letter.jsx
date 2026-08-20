@@ -5,10 +5,11 @@ import { useMemoryStore } from '../stores/useMemoryStore'
 import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: LETTER_POS } = MEMORY_CONFIG.letter
+const BASE = import.meta.env.BASE_URL
 
 export default function Letter({ position = LETTER_POS, scale = 3.5 }) {
   const group = useRef()
-  const { scene, animations } = useGLTF('/models/letter/scene.gltf')
+  const { scene, animations } = useGLTF(`${BASE}models/letter/scene.gltf`)
   const { actions } = useAnimations(animations, group)
   const setActiveMemory = useMemoryStore((s) => s.setActiveMemory)
 
@@ -61,4 +62,4 @@ export default function Letter({ position = LETTER_POS, scale = 3.5 }) {
   )
 }
 
-useGLTF.preload('/models/letter/scene.gltf')
+useGLTF.preload(`${BASE}models/letter/scene.gltf`)

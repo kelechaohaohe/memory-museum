@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { MEMORY_CONFIG } from '../libs/memoryConfig'
 
 const { position: PICTURE_POS } = MEMORY_CONFIG.picture
+const BASE = import.meta.env.BASE_URL
 
 export default function Picture({
   position = PICTURE_POS,
@@ -10,7 +11,7 @@ export default function Picture({
   rotation =[0, Math.PI / 6, 0],
   imageSrc = '/images/photo1.jpg',
 }) {
-  const { scene } = useGLTF('/models/frame.glb')
+  const { scene } = useGLTF(`${BASE}models/frame.glb`)
   const photoTexture = useTexture(imageSrc)
 
   useEffect(() => {
@@ -27,4 +28,4 @@ export default function Picture({
   return <primitive object={scene} position={position} scale={scale} rotation={rotation}/>
 }
 
-useGLTF.preload('/models/frame.glb')
+useGLTF.preload(`${BASE}models/frame.glb`)
