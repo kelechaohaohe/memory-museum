@@ -9,7 +9,7 @@ export default function Picture({
   position = PICTURE_POS,
   scale = 0.5,
   rotation =[0, Math.PI / 6, 0],
-  imageSrc = '/images/photo1.jpg',
+  imageSrc = `${BASE}images/photo1.jpg`,
 }) {
   const { scene } = useGLTF(`${BASE}models/frame.glb`)
   const photoTexture = useTexture(imageSrc)

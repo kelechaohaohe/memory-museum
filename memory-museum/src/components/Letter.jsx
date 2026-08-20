@@ -13,9 +13,9 @@ export default function Letter({ position = LETTER_POS, scale = 3.5 }) {
   const { actions } = useAnimations(animations, group)
   const setActiveMemory = useMemoryStore((s) => s.setActiveMemory)
 
-  const diffuseMap = useTexture('/models/letter/textures/Material_27_diffuse.png')
-  const normalMap = useTexture('/models/letter/textures/Material_27_normal.png')
-  const occlusionMap = useTexture('/models/letter/textures/Material_27_occlusion.png')
+  const diffuseMap = useTexture(`${BASE}models/letter/textures/Material_27_diffuse.png`)
+  const normalMap = useTexture(`${BASE}models/letter/textures/Material_27_normal.png`)
+  const occlusionMap = useTexture(`${BASE}models/letter/textures/Material_27_occlusion.png`)
 
   useEffect(() => {
     diffuseMap.flipY = false
