@@ -1,5 +1,5 @@
-import { Suspense, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
+import { Suspense, useEffect, useState } from 'react'
 import { OrbitControls, Environment } from '@react-three/drei'
 import {
   EffectComposer,
@@ -19,11 +19,13 @@ import DimOverlay from '../src/components/DimOverlay'
 import FlipTransition from './FlipTransition'
 import MemoryScene from './MemoryScene'
 import CameraRig from './CameraRig'
+import BackButton from '../src/components/BackButton'
 
 export default function App() {
   const activeMemory = useMemoryStore((s) => s.activeMemory)
   const isTransitioning = useMemoryStore((s) => s.isTransitioning)
   const finishTransition = useMemoryStore((s) => s.finishTransition)
+  const [memoryBlur, setMemoryBlur] = useState(false)
 
   // FIX: original called setTimeout directly in the render body, which
   // re-armed a new timer on every re-render while transitioning. Moved
@@ -62,7 +64,9 @@ export default function App() {
         )}
 
         {isTransitioning && <FlipTransition />}
-        {activeMemory && !isTransitioning && <MemoryScene />}
+        {activeMemory && !isTransitioning && (
+          <MemoryScene onMemoryBlur={setMemoryBlur} />
+        )}
 
         <OrbitControls
           enabled={!activeMemory && !isTransitioning}
@@ -70,10 +74,10 @@ export default function App() {
         />
 
         <EffectComposer>
-          <DepthOfField
-            focusDistance={activeMemory ? 0.015 : 0}   // 0 disables blur at the desk
+          <DepthOfField 
+            focusDistance={isTransitioning || memoryBlur ? 0.015 : 0}
             focalLength={0.05}
-            bokehScale={activeMemory ? 3 : 0}
+            bokehScale={isTransitioning || memoryBlur ? 3 : 0}
           />
           <Bloom intensity={0.5} luminanceThreshold={0.3} mipmapBlur />
           <Vignette eskil={false} offset={0.25} darkness={0.6} />
@@ -82,6 +86,7 @@ export default function App() {
       </Canvas>
 
       <DimOverlay />
+      {activeMemory && !isTransitioning && <BackButton />}
     </div>
   )
 }
