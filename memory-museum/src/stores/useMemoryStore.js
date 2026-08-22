@@ -19,7 +19,7 @@ export const useMemoryStore = create((set, get) => ({
   closeMemory: () => {
     const { isTransitioning } = get();
     if (isTransitioning) return;
-    set({ isTransitioning: true, activeMemory: null });
+    set({ activeMemory: null }); // no isTransitioning — closing is instant, no flash/flip
   },
 
   finishTransition: () => set({ isTransitioning: false }),
