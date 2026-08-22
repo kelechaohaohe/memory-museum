@@ -27,9 +27,24 @@ export default function CameraRig() {
   useEffect(() => {
     if (!introComplete) return;
 
-    const target = activeMemory
-      ? memoryConfig[activeMemory].cameraTarget
-      : DESK_VIEW;
+    // Going back to the desk: snap instantly, no animation.
+    if (!activeMemory) {
+      camera.position.set(...DESK_VIEW.position);
+      lookAtTarget.current = {
+        x: DESK_VIEW.lookAt[0],
+        y: DESK_VIEW.lookAt[1],
+        z: DESK_VIEW.lookAt[2],
+      };
+      camera.lookAt(DESK_VIEW.lookAt[0], DESK_VIEW.lookAt[1], DESK_VIEW.lookAt[2]);
+      finishTransition();
+      return;
+    }
+
+    // Opening a memory: keep the animated fly-in.
+    const target = {
+      position: MEMORY_CONFIG[activeMemory].cameraTarget,
+      lookAt: MEMORY_CONFIG[activeMemory].position,
+    };
 
     const tl = gsap.timeline({
       onComplete: () => finishTransition(),
