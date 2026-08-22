@@ -43,7 +43,6 @@ export default function MemoryScene({ onMemoryBlur }) {
         color={memory.particleColor}
       />
 
-      {/* each memory type owns its own title + interaction */}
       <ActiveComponent
         title={memory.title}
         onMemoryBlur={onMemoryBlur}
