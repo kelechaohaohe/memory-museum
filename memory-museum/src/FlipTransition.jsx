@@ -8,7 +8,7 @@ export default function FlipTransition({ position = [-0.5, -0.75, -0.4] }) {
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
     pages.current.forEach((p, i) => {
-      if (p) p.rotation.y = ((t * 14 + i * 0.25) % (Math.PI * 2)) - Math.PI
+      if (p) p.rotation.y = ((t * 3 + i * 0.25) % (Math.PI * 2)) - Math.PI
     })
   })
 
