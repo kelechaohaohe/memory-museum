@@ -4,7 +4,7 @@ import { MEMORY_CONFIG } from '../src/libs/memoryConfig'
 
 import BookMemory from './memories/BookMemory'
 // import LetterMemory from './memories/LetterMemory'
-// import RecordMemory from './memories/RecordMemory'
+import RecordMemory from './memories/RecordMemory'
 // import PictureMemory from './memories/PictureMemory'
 
 const PARTICLE_STYLE = {
@@ -17,7 +17,7 @@ const PARTICLE_STYLE = {
 const MEMORY_COMPONENTS = {
   book: BookMemory,
   // letter: LetterMemory,
-  // record: RecordMemory,
+  record: RecordMemory,
   // picture: PictureMemory,
 }
 
