@@ -17,11 +17,14 @@ import Picture from '../src/components/Picture'
 import Lamp from '../src/components/Lamp'
 import DimOverlay from '../src/components/DimOverlay'
 import FlipTransition from './FlipTransition'
+import WhiteFadeTransition from './components/WhiteFadeTransition'
 import MemoryScene from './MemoryScene'
 import CameraRig from './CameraRig'
 import BackButton from '../src/components/BackButton'
+import { useSyncMemoryRoute } from './hooks/useSyncMemoryRoute'
 
 export default function App() {
+  useSyncMemoryRoute()
   const activeMemory = useMemoryStore((s) => s.activeMemory)
   const isTransitioning = useMemoryStore((s) => s.isTransitioning)
   const finishTransition = useMemoryStore((s) => s.finishTransition)
@@ -63,7 +66,9 @@ export default function App() {
           </>
         )}
 
-        {isTransitioning && <FlipTransition />}
+              
+        {isTransitioning && activeMemory === 'record' && null /* white fade renders outside Canvas below */}
+        {isTransitioning && activeMemory !== 'record' && <FlipTransition />}
         {activeMemory && !isTransitioning && (
           <MemoryScene onMemoryBlur={setMemoryBlur} />
         )}
@@ -86,6 +91,7 @@ export default function App() {
       </Canvas>
 
       <DimOverlay />
+      <WhiteFadeTransition active={isTransitioning && activeMemory === 'record'} />
       {activeMemory && !isTransitioning && <BackButton />}
     </div>
   )
