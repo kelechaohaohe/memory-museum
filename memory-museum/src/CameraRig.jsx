@@ -47,7 +47,11 @@ export default function CameraRig() {
     };
 
     const tl = gsap.timeline({
-      onComplete: () => finishTransition(),
+      onComplete: () => {
+        camera.position.set(...target.position);
+        camera.lookAt(target.lookAt[0], target.lookAt[1], target.lookAt[2]);
+        finishTransition();
+      },
     });
 
     tl.to(camera.position, {
@@ -75,6 +79,12 @@ export default function CameraRig() {
     camera.position.x += (targetX - camera.position.x) * 0.03;
     camera.position.y += (targetY - camera.position.y) * 0.03;
     camera.lookAt(DESK_VIEW.lookAt[0], DESK_VIEW.lookAt[1], DESK_VIEW.lookAt[2]);
+  });
+
+  useFrame(() => {
+    if (!activeMemory) return;
+    const target = MEMORY_CONFIG[activeMemory];
+    camera.lookAt(target.position[0], target.position[1], target.position[2]);
   });
 
   return null;
