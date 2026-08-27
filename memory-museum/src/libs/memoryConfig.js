@@ -16,7 +16,7 @@ export const MEMORY_CONFIG = {
     cameraTarget: [-0.6, -0.62, 0.75],
     title: 'The Story We Read',
     color: '#f4ecd8',
-    particleColor: '#f4ecd8',
+    particleColor: '#6fbf73',
   },
   record: {
     id: 'record',
