@@ -3,20 +3,20 @@ import { useMemoryStore } from '../src/stores/useMemoryStore'
 import { MEMORY_CONFIG } from '../src/libs/memoryConfig'
 
 import BookMemory from './memories/BookMemory'
-// import LetterMemory from './memories/LetterMemory'
+import LetterMemory from './memories/LetterMemory'
 import RecordMemory from './memories/RecordMemory'
 // import PictureMemory from './memories/PictureMemory'
 
 const PARTICLE_STYLE = {
   book: { size: 2.5, speed: 0.2 },
-  letter: { size: 4, speed: 0.15 },
+  letter: { size: 1.5, speed: 0.6 },
   record: { size: 1.5, speed: 0.6 },
   picture: { size: 3, speed: 0.35 },
 }
 
 const MEMORY_COMPONENTS = {
   book: BookMemory,
-  // letter: LetterMemory,
+  letter: LetterMemory,
   record: RecordMemory,
   // picture: PictureMemory,
 }
