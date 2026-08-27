@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Text, Billboard } from '@react-three/drei'
+import { MEMORY_CONFIG } from '../libs/memoryConfig'
+
+const BOOK_ANCHOR = MEMORY_CONFIG.book.position
 
 const TIMES_FONT =
   'https://cdn.jsdelivr.net/fontsource/fonts/tinos@latest/latin-400-normal.ttf'
@@ -67,7 +70,7 @@ export default function BookMemory({ title, onMemoryBlur }) {
   }, [index, onMemoryBlur])
 
   return (
-    <group onClick={handleClick}>
+    <group position={BOOK_ANCHOR} onClick={handleClick}>
       <mesh position={[0, 0, -1]}>
         <planeGeometry args={[50, 50]} />
         <meshBasicMaterial
@@ -77,9 +80,11 @@ export default function BookMemory({ title, onMemoryBlur }) {
         />
       </mesh>
 
+      <pointLight position={[0, 0.4, 1.5]} intensity={1.2} color="#ffe9c7" />
+
       <Billboard>
         <Text
-          position={[0, 0.4, 0]}
+          position={[0, 2, 0]}
           fontSize={0.4}
           color="white"
           anchorX="center"
@@ -88,7 +93,7 @@ export default function BookMemory({ title, onMemoryBlur }) {
           {title}
         </Text>
         <Text
-            position={[0, -0.2, 0]}
+            position={[0, 1.6, 0]}
             fontSize={0.22}
             color="white"
             anchorX="center"
