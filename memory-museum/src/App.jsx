@@ -30,9 +30,6 @@ export default function App() {
   const finishTransition = useMemoryStore((s) => s.finishTransition)
   const [memoryBlur, setMemoryBlur] = useState(false)
 
-  // FIX: original called setTimeout directly in the render body, which
-  // re-armed a new timer on every re-render while transitioning. Moved
-  // into an effect that fires once per transition and cleans up.
   useEffect(() => {
     if (!isTransitioning) return
     const timer = setTimeout(() => finishTransition(), 900)

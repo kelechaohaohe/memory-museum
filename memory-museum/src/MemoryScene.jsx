@@ -5,7 +5,7 @@ import { MEMORY_CONFIG } from '../src/libs/memoryConfig'
 import BookMemory from './memories/BookMemory'
 import LetterMemory from './memories/LetterMemory'
 import RecordMemory from './memories/RecordMemory'
-// import PictureMemory from './memories/PictureMemory'
+import PictureMemory from './memories/PictureMemory'
 
 const PARTICLE_STYLE = {
   book: { size: 2.5, speed: 0.2 },
@@ -18,7 +18,7 @@ const MEMORY_COMPONENTS = {
   book: BookMemory,
   letter: LetterMemory,
   record: RecordMemory,
-  // picture: PictureMemory,
+  picture: PictureMemory,
 }
 
 export default function MemoryScene({ onMemoryBlur }) {
