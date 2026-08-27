@@ -68,7 +68,7 @@ export default function App() {
 
               
         {isTransitioning && activeMemory === 'record' && null /* white fade renders outside Canvas below */}
-        {isTransitioning && activeMemory !== 'record' && <FlipTransition />}
+        {isTransitioning && activeMemory !== 'record' && activeMemory !== 'letter' && <FlipTransition />}
         {activeMemory && !isTransitioning && (
           <MemoryScene onMemoryBlur={setMemoryBlur} />
         )}
@@ -91,7 +91,12 @@ export default function App() {
       </Canvas>
 
       <DimOverlay />
-      <WhiteFadeTransition active={isTransitioning && activeMemory === 'record'} />
+      <WhiteFadeTransition
+        active={
+          isTransitioning &&
+          (activeMemory === 'record' || activeMemory === 'letter')
+        }
+      />
       {activeMemory && !isTransitioning && <BackButton />}
     </div>
   )
