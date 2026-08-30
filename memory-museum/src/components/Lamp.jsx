@@ -11,7 +11,6 @@ export default function Lamp({ position = [1.8, -0.82, -0.9], scale = 2 }) {
     e.stopPropagation()
     setIsOn(prev => !prev)
     
-    // Adjust the lamp model's internal material glow
     scene.traverse((child) => {
       if (child.isMesh && child.material && child.material.emissive) {
         child.material.emissiveIntensity = !isOn ? 2.5 : 0.15
@@ -26,13 +25,20 @@ export default function Lamp({ position = [1.8, -0.82, -0.9], scale = 2 }) {
         position={position} 
         scale={scale} 
         onClick={handleClick}
+        onPointerOver={(e) => {
+          e.stopPropagation()
+          document.body.style.cursor = 'pointer'
+        }}
+        onPointerOut={() => {
+          document.body.style.cursor = 'default'
+        }}
       />
       
       <pointLight 
         position={[position[0], position[1] + 0.5, position[2]]} 
-        intensity={isOn ? 3.0 : 0.3}
+        intensity={isOn ? 3.0 : 0.3} 
         distance={6} 
-        color={isOn ? "#fffaed" : "#ffb76b"} // Warmer, cozy amber tint for evening, soft white for bright
+        color={isOn ? "#fffaed" : "#ffb76b"} 
       />
     </>
   )
