@@ -6,7 +6,7 @@ const TIMES_FONT =
   'https://cdn.jsdelivr.net/fontsource/fonts/tinos@latest/latin-400-normal.ttf'
 
 const PENCIL_CURSOR =
-  `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 21l3-1 11-11-2-2L4 18z" fill="black" stroke="white" stroke-width="0.5"/></svg>') 0 24, auto`
+  `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path d="M19.4 4.6a2 2 0 0 1 2.8 2.8l-1.4 1.4-2.8-2.8 1.4-1.4zm-2.8 2.8l2.8 2.8-9.2 9.2-3.5.7.7-3.5 9.2-9.2z" fill="%23f4ead1" stroke="%23c9a86a" stroke-width="0.6"/></svg>') 14 14, auto`;
 
 const SENTENCES = [
   "I remember being angry about the small things first.",
