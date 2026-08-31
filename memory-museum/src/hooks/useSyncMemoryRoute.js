@@ -27,7 +27,7 @@ export function useSyncMemoryRoute() {
       skipNextSync.current = false
       return
     }
-    navigate(activeMemory ? `/memory/${activeMemory}` : '/')
+   navigate(activeMemory ? `/${activeMemory}` : '/')
   }, [activeMemory])
 
   useEffect(() => {

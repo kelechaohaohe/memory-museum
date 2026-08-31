@@ -9,7 +9,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/memory-museum">
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/memory/:memoryId" element={<App />} />
+        <Route path="/:memoryId" element={<App />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
