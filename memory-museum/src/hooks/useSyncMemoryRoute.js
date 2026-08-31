@@ -10,21 +10,26 @@ export function useSyncMemoryRoute() {
   const closeMemory = useMemoryStore((s) => s.closeMemory)
   const introComplete = useMemoryStore((s) => s.introComplete)
   const didInit = useRef(false)
+  const skipNextSync = useRef(false) 
 
-  // deep link on load: /memory/record -> store (once, after intro)
   useEffect(() => {
     if (didInit.current || !introComplete) return
     didInit.current = true
-    if (memoryId && memoryId !== activeMemory) setActiveMemory(memoryId)
+    if (memoryId && memoryId !== activeMemory) {
+      skipNextSync.current = true
+      setActiveMemory(memoryId)
+    }
   }, [introComplete])
 
-  // store -> URL, whenever the object clicked changes
   useEffect(() => {
     if (!didInit.current) return
+    if (skipNextSync.current) {
+      skipNextSync.current = false
+      return
+    }
     navigate(activeMemory ? `/memory/${activeMemory}` : '/')
   }, [activeMemory])
 
-  // browser back/forward -> store
   useEffect(() => {
     if (!didInit.current) return
     if (!memoryId && activeMemory) closeMemory()
